@@ -1,0 +1,15 @@
+<launch>
+	<arg name="veh"  doc="Name of vehicle"/>
+    <arg name="param_file_name" default="default" doc="Specify a param file" />
+    <arg name="pkg_name" value="LCT_node"/>
+    <arg name="node_name" default="LCT_node"/>
+
+    <group ns="$(arg veh)">
+        <node  name="$(arg node_name)" pkg="$(arg pkg_name)" type="$(arg node_name).py" output="screen" required="true">
+            <rosparam command="load" file="$(find LCT_node)/config/$(arg param_file_name).yaml"/>
+
+        </node>
+
+    </group>
+
+</launch>
